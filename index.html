@@ -7,57 +7,34 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --primary: #1E63B8;
-  --primary-dark: #174e93;
-  --secondary: #C02A5A;
-  --accent: #7A3F8A;
-  --gradient: linear-gradient(135deg, #1E63B8, #C02A5A);
-  --bg: #ffffff;
-  --bg2: #f4f6fb;
-  --bg3: #eef1f8;
-  --txt: #111827;
-  --txt2: #5a6478;
-  --bdr: rgba(30,99,184,0.14);
-  --bdr2: rgba(30,99,184,0.28);
-  --r: 8px; --rl: 12px;
-  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --primary: #1E63B8; --primary-dark: #174e93; --secondary: #C02A5A;
+  --accent: #7A3F8A; --gradient: linear-gradient(135deg, #1E63B8, #C02A5A);
+  --bg: #ffffff; --bg2: #f4f6fb; --bg3: #eef1f8;
+  --txt: #111827; --txt2: #5a6478;
+  --bdr: rgba(30,99,184,0.14); --bdr2: rgba(30,99,184,0.28);
+  --r: 8px; --rl: 12px; --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 body { font-family: var(--font); background: var(--bg2); color: var(--txt); min-height: 100vh; padding: 0; }
 .topbar { background: var(--gradient); padding: 1.5rem 1.5rem 0; }
-.topbar-inner { max-width: 960px; margin: 0 auto; }
+.topbar-inner { max-width: 1100px; margin: 0 auto; }
 .topbar h1 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 4px; }
 .topbar p { font-size: 14px; color: rgba(255,255,255,0.82); margin-bottom: 1.25rem; }
-.tabs { display: flex; gap: 4px; max-width: 960px; margin: 0 auto; }
-.tab {
-  padding: 10px 20px; font-size: 13px; font-weight: 600; cursor: pointer;
-  background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.75);
-  border: none; border-radius: 8px 8px 0 0; font-family: var(--font);
-  transition: all .15s; white-space: nowrap;
-}
+.tabs { display: flex; gap: 3px; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; }
+.tab { padding: 9px 14px; font-size: 12px; font-weight: 600; cursor: pointer; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.75); border: none; border-radius: 8px 8px 0 0; font-family: var(--font); transition: all .15s; white-space: nowrap; }
 .tab:hover { background: rgba(255,255,255,0.25); color: #fff; }
 .tab.active { background: var(--bg2); color: var(--primary); }
-.app { max-width: 960px; margin: 0 auto; padding: 1.25rem 1rem 2rem; }
+.app { max-width: 1100px; margin: 0 auto; padding: 1.25rem 1rem 2rem; }
 .tabpanel { display: none; }
 .tabpanel.active { display: block; }
 .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
-@media (max-width: 680px) { .layout { grid-template-columns: 1fr; } .tab { padding: 8px 12px; font-size: 12px; } }
+@media (max-width: 720px) { .layout { grid-template-columns: 1fr; } .tab { padding: 7px 10px; font-size: 11px; } }
 .panel { background: var(--bg); border: 1px solid var(--bdr); border-radius: var(--rl); padding: 1.25rem; box-shadow: 0 1px 4px rgba(30,99,184,0.06); }
 .ptitle { font-size: 11px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: .09em; margin-bottom: 14px; border-left: 3px solid var(--primary); padding-left: 8px; }
 .field { margin-bottom: 13px; }
 label { display: block; font-size: 13px; color: var(--txt2); margin-bottom: 5px; font-weight: 500; }
-input, textarea, select {
-  width: 100%; font-size: 14px; color: var(--txt); background: var(--bg2);
-  border: 1px solid var(--bdr); border-radius: var(--r);
-  padding: 8px 10px; font-family: var(--font); resize: vertical;
-  transition: border-color .15s, box-shadow .15s;
-}
+input, textarea, select { width: 100%; font-size: 14px; color: var(--txt); background: var(--bg2); border: 1px solid var(--bdr); border-radius: var(--r); padding: 8px 10px; font-family: var(--font); resize: vertical; transition: border-color .15s, box-shadow .15s; }
 input:focus, textarea:focus, select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(30,99,184,0.1); }
-.gbtn {
-  width: 100%; padding: 11px; font-size: 14px; font-weight: 700;
-  background: var(--gradient); color: white; border: none; border-radius: var(--r);
-  cursor: pointer; font-family: var(--font); margin-top: 4px;
-  letter-spacing: 0.02em; transition: opacity .15s;
-}
+.gbtn { width: 100%; padding: 11px; font-size: 14px; font-weight: 700; background: var(--gradient); color: white; border: none; border-radius: var(--r); cursor: pointer; font-family: var(--font); margin-top: 4px; letter-spacing: 0.02em; transition: opacity .15s; }
 .gbtn:hover { opacity: 0.88; }
 .gbtn:disabled { background: var(--bg3); color: var(--txt2); cursor: not-allowed; border: 1px solid var(--bdr); opacity: 1; }
 .divider { height: 1px; background: var(--bdr); margin: 13px 0; }
@@ -66,7 +43,7 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--p
 .vrow select { width: auto; }
 .outcol { display: flex; flex-direction: column; gap: 12px; }
 .adcard { background: var(--bg); border: 1px solid var(--bdr); border-radius: var(--rl); overflow: hidden; box-shadow: 0 1px 4px rgba(30,99,184,0.06); }
-.adhead { padding: 10px 14px; background: var(--bg3); border-bottom: 1px solid var(--bdr); display: flex; align-items: center; justify-content: space-between; }
+.adhead { padding: 10px 14px; background: var(--bg3); border-bottom: 1px solid var(--bdr); display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
 .adlabel { font-size: 13px; font-weight: 700; color: var(--primary); }
 .badge { font-size: 11px; padding: 3px 9px; border-radius: 20px; font-weight: 700; }
 .bpass { background: #E6F4EA; color: #1E7E34; }
@@ -94,15 +71,16 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--p
 .ugc-story { background: #eef1f8; color: var(--primary); }
 .ugc-proof { background: #E6F4EA; color: #1E7E34; }
 .ugc-cta { background: #fbedf2; color: var(--secondary); }
-.ugc-dir { background: #f5f0fa; color: var(--accent); }
 .cnotes { margin: 0 14px 12px; padding: 8px 10px; background: var(--bg3); border-radius: var(--r); border-left: 3px solid var(--bdr2); }
 .cnotes p { font-size: 12px; line-height: 1.5; color: var(--txt2); }
 .cnotes p + p { margin-top: 4px; }
 .nwarn { color: #D97706 !important; }
 .nfail { color: #DC2626 !important; }
-.adacts { display: flex; gap: 8px; padding: 10px 14px; border-top: 1px solid var(--bdr); flex-wrap: wrap; }
+.adacts { display: flex; gap: 8px; padding: 10px 14px; border-top: 1px solid var(--bdr); flex-wrap: wrap; align-items: center; }
 .abtn { font-size: 12px; padding: 5px 13px; border-radius: var(--r); background: var(--bg); border: 1px solid var(--bdr2); cursor: pointer; color: var(--primary); font-family: var(--font); font-weight: 600; transition: all .15s; }
 .abtn:hover { background: var(--bg3); border-color: var(--primary); }
+.abtn-red { color: var(--secondary); border-color: rgba(192,42,90,0.3); }
+.abtn-red:hover { background: #fbedf2; border-color: var(--secondary); }
 .empty { padding: 3rem 1rem; text-align: center; }
 .empty p { font-size: 14px; color: var(--txt2); line-height: 1.7; }
 .ei { font-size: 36px; margin-bottom: 10px; }
@@ -115,6 +93,41 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--p
 .sbox strong { color: var(--accent); font-weight: 700; }
 .vtag { font-size: 13px; font-weight: 700; color: var(--txt); margin-bottom: 4px; }
 .errmsg { padding: 14px; background: #FDECEA; border-radius: var(--r); font-size: 14px; color: #B71C1C; }
+.risk-bar { display: flex; align-items: center; gap: 8px; padding: 8px 14px; background: var(--bg2); border-top: 1px solid var(--bdr); }
+.risk-label { font-size: 11px; font-weight: 700; color: var(--txt2); text-transform: uppercase; letter-spacing: .06em; white-space: nowrap; }
+.risk-track { flex: 1; height: 6px; background: var(--bdr); border-radius: 3px; overflow: hidden; }
+.risk-fill { height: 100%; border-radius: 3px; }
+.risk-low { background: #66bb6a; }
+.risk-med { background: #ffa726; }
+.risk-high { background: #ef5350; }
+.dropzone { border: 2px dashed var(--bdr2); border-radius: var(--r); padding: 1rem; text-align: center; cursor: pointer; transition: all .2s; background: var(--bg2); margin-bottom: 13px; }
+.dropzone.dragover { border-color: var(--primary); background: #eef1f8; }
+.dropzone p { font-size: 13px; color: var(--txt2); margin-bottom: 4px; }
+.dropzone span { font-size: 22px; display: block; margin-bottom: 4px; }
+.dropzone textarea { width: 100%; min-height: 130px; font-size: 13px; color: var(--txt); background: transparent; border: none; resize: vertical; font-family: var(--font); line-height: 1.6; outline: none; }
+.issue-list { margin: 6px 0 10px; padding: 0; list-style: none; }
+.issue-list li { font-size: 12px; padding: 4px 8px; border-radius: var(--r); margin-bottom: 4px; }
+.issue-item { background: #FDECEA; color: #B71C1C; }
+.warn-item { background: #FEF3CD; color: #856404; }
+.fix-section { margin-bottom: 10px; }
+.fix-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-bottom: 4px; background: var(--bg3); color: var(--primary); border: 1px solid var(--bdr); }
+.fix-rewritten { background: #f6fff8; border-left: 3px solid #66bb6a; padding: 10px 12px; border-radius: var(--r); font-size: 14px; color: var(--txt); line-height: 1.75; }
+.appeal-box { background: #f6fff8; border-left: 3px solid #66bb6a; padding: 12px 14px; border-radius: var(--r); font-size: 14px; color: var(--txt); line-height: 1.75; white-space: pre-wrap; }
+.lib-empty { padding: 2rem; text-align: center; color: var(--txt2); font-size: 14px; }
+.lib-card { background: var(--bg); border: 1px solid var(--bdr); border-radius: var(--rl); overflow: hidden; margin-bottom: 12px; box-shadow: 0 1px 4px rgba(30,99,184,0.06); }
+.lib-head { padding: 10px 14px; background: var(--bg3); border-bottom: 1px solid var(--bdr); display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.lib-meta { font-size: 11px; color: var(--txt2); }
+.lib-body { padding: 12px 14px; font-size: 13px; color: var(--txt); line-height: 1.7; white-space: pre-wrap; word-break: break-word; max-height: 180px; overflow-y: auto; }
+.lib-tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 20px; background: var(--bg3); color: var(--primary); border: 1px solid var(--bdr); margin: 0 14px 10px; }
+.log-item { background: var(--bg); border: 1px solid var(--bdr); border-radius: var(--r); padding: 10px 14px; margin-bottom: 8px; }
+.log-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.log-date { font-size: 11px; color: var(--txt2); }
+.log-reason { font-size: 12px; font-weight: 700; color: #B71C1C; }
+.log-preview { font-size: 13px; color: var(--txt2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+.stat-card { background: var(--bg); border: 1px solid var(--bdr); border-radius: var(--r); padding: 10px 12px; text-align: center; }
+.stat-num { font-size: 22px; font-weight: 700; color: var(--primary); }
+.stat-lbl { font-size: 11px; color: var(--txt2); margin-top: 2px; }
 </style>
 </head>
 <body>
@@ -122,12 +135,16 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--p
 <div class="topbar">
   <div class="topbar-inner">
     <h1>Quantom Sync LLC</h1>
-    <p>Ad Copy &amp; Script Generator</p>
+    <p>Facebook Ad Compliance Hub</p>
   </div>
   <div class="tabs">
-    <button class="tab active" onclick="switchTab('fb', this)">📢 Facebook Ad</button>
-    <button class="tab" onclick="switchTab('isa', this)">📞 ISA Calling Script</button>
-    <button class="tab" onclick="switchTab('ugc', this)">🎥 UGC Ad Script</button>
+    <button class="tab active" onclick="switchTab('fb',this)">📢 Facebook Ad</button>
+    <button class="tab" onclick="switchTab('isa',this)">📞 ISA Script</button>
+    <button class="tab" onclick="switchTab('ugc',this)">🎥 UGC Script</button>
+    <button class="tab" onclick="switchTab('fix',this)">🔧 Fix Rejected Ad</button>
+    <button class="tab" onclick="switchTab('appeal',this)">📨 Appeal Helper</button>
+    <button class="tab" onclick="switchTab('library',this)">📚 Ad Library</button>
+    <button class="tab" onclick="switchTab('log',this)">📋 Rejection Log</button>
   </div>
 </div>
 
@@ -136,111 +153,199 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--p
   <!-- TAB 1: FACEBOOK AD -->
   <div id="tab-fb" class="tabpanel active">
     <div class="layout">
-      <div>
-        <div class="panel">
-          <div class="ptitle">Campaign details</div>
-          <div class="field"><label>Product or service</label><input type="text" id="fb-product" placeholder="e.g. Life insurance plan" /></div>
-          <div class="field"><label>Target audience</label><input type="text" id="fb-audience" placeholder="e.g. Parents aged 30–50" /></div>
-          <div class="field"><label>Main pain point</label><input type="text" id="fb-pain" placeholder="e.g. Worried about family's financial future" /></div>
-          <div class="field"><label>Offer / key benefit</label><input type="text" id="fb-offer" placeholder="e.g. Get covered from $1/day, free quote" /></div>
-          <div class="field">
-            <label>Checkmark benefits <span style="font-weight:400">(one per line)</span></label>
-            <textarea id="fb-benefits" rows="4" placeholder="No medical exam required&#10;Coverage starts immediately&#10;Flexible payment plans&#10;Trusted by 10,000+ families"></textarea>
-          </div>
-          <div class="divider"></div>
-          <div class="field"><label>Extra context <span style="font-weight:400">(optional)</span></label><textarea id="fb-context" rows="2" placeholder="Brand voice, promotions, niche details..."></textarea></div>
-          <div class="field vrow"><label>Variants</label><select id="fb-variants"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option></select></div>
-          <button class="gbtn" id="fb-btn" onclick="generateFB()">Generate Facebook Ad Copies</button>
-          <div class="sbox"><p><strong>8-step format:</strong> Emoji callout → relatable situation → offer intro → emotional question → "Here's the good news" → offer headline → ✅ benefits → 👉 Click Learn More CTA.</p></div>
+      <div><div class="panel">
+        <div class="ptitle">Campaign details</div>
+        <div class="field"><label>Industry / niche</label>
+          <select id="fb-industry">
+            <option value="general">General</option>
+            <option value="insurance">Insurance</option>
+            <option value="finance">Finance / Loans</option>
+            <option value="health">Health &amp; Wellness</option>
+            <option value="weight loss">Weight Loss / Fitness</option>
+            <option value="legal">Legal Services</option>
+            <option value="real estate">Real Estate</option>
+            <option value="ecommerce">E-commerce</option>
+            <option value="education">Education / Courses</option>
+            <option value="beauty">Beauty &amp; Skincare</option>
+          </select>
         </div>
-      </div>
-      <div class="outcol" id="fb-out">
-        <div class="empty"><div class="ei">📢</div><p>Fill in your campaign details<br>and generate Facebook ad copies.</p></div>
-      </div>
+        <div class="field"><label>Product or service</label><input type="text" id="fb-product" placeholder="e.g. Life insurance plan" /></div>
+        <div class="field"><label>Target audience</label><input type="text" id="fb-audience" placeholder="e.g. Parents aged 30-50" /></div>
+        <div class="field"><label>Main pain point</label><input type="text" id="fb-pain" placeholder="e.g. Worried about family's financial future" /></div>
+        <div class="field"><label>Offer / key benefit</label><input type="text" id="fb-offer" placeholder="e.g. Get covered from $1/day, free quote" /></div>
+        <div class="field"><label>Checkmark benefits <span style="font-weight:400">(one per line)</span></label>
+          <textarea id="fb-benefits" rows="4" placeholder="No medical exam required&#10;Coverage starts immediately&#10;Flexible payment plans&#10;Trusted by 10,000+ families"></textarea>
+        </div>
+        <div class="divider"></div>
+        <div class="field"><label>Extra context <span style="font-weight:400">(optional)</span></label><textarea id="fb-context" rows="2" placeholder="Brand voice, promotions, niche details..."></textarea></div>
+        <div class="field vrow"><label>Variants</label><select id="fb-variants"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option></select></div>
+        <button class="gbtn" id="fb-btn" onclick="generateFB()">Generate Facebook Ad Copies</button>
+        <div class="sbox"><p><strong>8-step format</strong> with industry-specific compliance rules. Every ad gets a <strong>risk score</strong> and can be saved to the Ad Library.</p></div>
+      </div></div>
+      <div class="outcol" id="fb-out"><div class="empty"><div class="ei">📢</div><p>Fill in your campaign details<br>and generate Facebook ad copies.</p></div></div>
     </div>
   </div>
 
-  <!-- TAB 2: ISA CALLING SCRIPT -->
+  <!-- TAB 2: ISA SCRIPT -->
   <div id="tab-isa" class="tabpanel">
     <div class="layout">
-      <div>
-        <div class="panel">
-          <div class="ptitle">Script details</div>
-          <div class="field"><label>Insurance product</label><input type="text" id="isa-product" placeholder="e.g. Term life insurance, health plan" /></div>
-          <div class="field"><label>Lead type</label><select id="isa-leadtype">
-            <option value="cold">Cold lead (no prior contact)</option>
-            <option value="warm" selected>Warm lead (showed interest online)</option>
-            <option value="followup">Follow-up (previous call)</option>
-            <option value="referral">Referral lead</option>
-          </select></div>
-          <div class="field"><label>Agent name</label><input type="text" id="isa-agent" placeholder="e.g. Mark" /></div>
-          <div class="field"><label>Company / brand name</label><input type="text" id="isa-company" placeholder="e.g. SafeGuard Insurance" /></div>
-          <div class="field"><label>Main prospect pain point</label><input type="text" id="isa-pain" placeholder="e.g. No coverage, worried about leaving family unprotected" /></div>
-          <div class="field"><label>Key offer / hook</label><input type="text" id="isa-offer" placeholder="e.g. Free 10-min quote, no obligation" /></div>
-          <div class="field"><label>Common objections <span style="font-weight:400">(one per line)</span></label>
-            <textarea id="isa-objections" rows="3" placeholder="I already have coverage&#10;I can't afford it&#10;I need to talk to my spouse"></textarea>
-          </div>
-          <div class="divider"></div>
-          <div class="field"><label>Extra context <span style="font-weight:400">(optional)</span></label><textarea id="isa-context" rows="2" placeholder="State, niche audience, special promotion..."></textarea></div>
-          <button class="gbtn" id="isa-btn" onclick="generateISA()">Generate Calling Script</button>
-          <div class="sbox"><p><strong>Script includes:</strong> Opening hook → rapport builder → pain discovery → offer bridge → objection handlers → close → follow-up line. Labeled by speaker role.</p></div>
+      <div><div class="panel">
+        <div class="ptitle">Script details</div>
+        <div class="field"><label>Insurance product</label><input type="text" id="isa-product" placeholder="e.g. Term life insurance, health plan" /></div>
+        <div class="field"><label>Lead type</label><select id="isa-leadtype">
+          <option value="cold">Cold lead</option>
+          <option value="warm" selected>Warm lead (showed interest online)</option>
+          <option value="followup">Follow-up (previous call)</option>
+          <option value="referral">Referral lead</option>
+        </select></div>
+        <div class="field"><label>Agent name</label><input type="text" id="isa-agent" placeholder="e.g. Mark" /></div>
+        <div class="field"><label>Company name</label><input type="text" id="isa-company" placeholder="e.g. SafeGuard Insurance" /></div>
+        <div class="field"><label>Prospect pain point</label><input type="text" id="isa-pain" placeholder="e.g. No coverage, worried about family" /></div>
+        <div class="field"><label>Key offer / hook</label><input type="text" id="isa-offer" placeholder="e.g. Free 10-min quote, no obligation" /></div>
+        <div class="field"><label>Common objections <span style="font-weight:400">(one per line)</span></label>
+          <textarea id="isa-objections" rows="3" placeholder="I already have coverage&#10;I can't afford it&#10;Need to talk to spouse"></textarea>
         </div>
-      </div>
-      <div class="outcol" id="isa-out">
-        <div class="empty"><div class="ei">📞</div><p>Fill in the script details<br>and generate your ISA calling script.</p></div>
-      </div>
+        <div class="divider"></div>
+        <div class="field"><label>Extra context <span style="font-weight:400">(optional)</span></label><textarea id="isa-context" rows="2" placeholder="State, niche audience, promotion..."></textarea></div>
+        <button class="gbtn" id="isa-btn" onclick="generateISA()">Generate Calling Script</button>
+        <div class="sbox"><p><strong>Includes:</strong> Opening hook → rapport → discovery → offer → objection handlers → close → voicemail line.</p></div>
+      </div></div>
+      <div class="outcol" id="isa-out"><div class="empty"><div class="ei">📞</div><p>Fill in the script details<br>and generate your ISA calling script.</p></div></div>
     </div>
   </div>
 
-  <!-- TAB 3: UGC AD SCRIPT -->
+  <!-- TAB 3: UGC SCRIPT -->
   <div id="tab-ugc" class="tabpanel">
     <div class="layout">
-      <div>
-        <div class="panel">
-          <div class="ptitle">UGC script details</div>
-          <div class="field"><label>Product or service</label><input type="text" id="ugc-product" placeholder="e.g. Life insurance plan" /></div>
-          <div class="field"><label>Creator persona</label><select id="ugc-persona">
-            <option value="satisfied customer">Satisfied customer</option>
-            <option value="skeptic turned believer">Skeptic turned believer</option>
-            <option value="busy parent">Busy parent</option>
-            <option value="young professional">Young professional</option>
-            <option value="small business owner">Small business owner</option>
-          </select></div>
-          <div class="field"><label>Platform</label><select id="ugc-platform">
-            <option value="Facebook / Instagram Reels">Facebook / Instagram Reels</option>
-            <option value="TikTok">TikTok</option>
-            <option value="YouTube Shorts">YouTube Shorts</option>
-          </select></div>
-          <div class="field"><label>Video length</label><select id="ugc-length">
-            <option value="30 seconds">30 seconds</option>
-            <option value="45 seconds" selected>45 seconds</option>
-            <option value="60 seconds">60 seconds</option>
-          </select></div>
-          <div class="field"><label>Hook angle</label><select id="ugc-hook">
-            <option value="shocking stat or fact">Shocking stat / fact</option>
-            <option value="relatable struggle">Relatable struggle</option>
-            <option value="bold claim">Bold claim</option>
-            <option value="direct question to viewer">Direct question to viewer</option>
-            <option value="story opener">Story opener</option>
-          </select></div>
-          <div class="field"><label>Main benefit to highlight</label><input type="text" id="ugc-benefit" placeholder="e.g. Peace of mind, affordable, no exam needed" /></div>
-          <div class="field"><label>CTA goal</label><select id="ugc-cta">
-            <option value="Click the link to get a free quote">Free quote</option>
-            <option value="Click Learn More to get started">Learn More</option>
-            <option value="DM us the word PROTECT to get started">DM keyword</option>
-            <option value="Sign up for a free consultation">Free consultation</option>
-          </select></div>
-          <div class="divider"></div>
-          <div class="field"><label>Extra context <span style="font-weight:400">(optional)</span></label><textarea id="ugc-context" rows="2" placeholder="Target audience, tone, key differentiators..."></textarea></div>
-          <div class="field vrow"><label>Variants</label><select id="ugc-variants"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option></select></div>
-          <button class="gbtn" id="ugc-btn" onclick="generateUGC()">Generate UGC Scripts</button>
-          <div class="sbox"><p><strong>Script includes:</strong> Hook (0–3s) → relatable story → product intro → social proof → benefits → CTA. Includes on-screen text and director notes.</p></div>
+      <div><div class="panel">
+        <div class="ptitle">UGC script details</div>
+        <div class="field"><label>Product or service</label><input type="text" id="ugc-product" placeholder="e.g. Life insurance plan" /></div>
+        <div class="field"><label>Creator persona</label><select id="ugc-persona">
+          <option value="satisfied customer">Satisfied customer</option>
+          <option value="skeptic turned believer">Skeptic turned believer</option>
+          <option value="busy parent">Busy parent</option>
+          <option value="young professional">Young professional</option>
+          <option value="small business owner">Small business owner</option>
+        </select></div>
+        <div class="field"><label>Platform</label><select id="ugc-platform">
+          <option value="Facebook / Instagram Reels">Facebook / Instagram Reels</option>
+          <option value="TikTok">TikTok</option>
+          <option value="YouTube Shorts">YouTube Shorts</option>
+        </select></div>
+        <div class="field"><label>Video length</label><select id="ugc-length">
+          <option value="30 seconds">30 seconds</option>
+          <option value="45 seconds" selected>45 seconds</option>
+          <option value="60 seconds">60 seconds</option>
+        </select></div>
+        <div class="field"><label>Hook angle</label><select id="ugc-hook">
+          <option value="shocking stat or fact">Shocking stat / fact</option>
+          <option value="relatable struggle">Relatable struggle</option>
+          <option value="bold claim">Bold claim</option>
+          <option value="direct question to viewer">Direct question</option>
+          <option value="story opener">Story opener</option>
+        </select></div>
+        <div class="field"><label>Main benefit</label><input type="text" id="ugc-benefit" placeholder="e.g. Peace of mind, affordable, no exam" /></div>
+        <div class="field"><label>CTA goal</label><select id="ugc-cta">
+          <option value="Click the link to get a free quote">Free quote</option>
+          <option value="Click Learn More to get started">Learn More</option>
+          <option value="DM us the word PROTECT to get started">DM keyword</option>
+          <option value="Sign up for a free consultation">Free consultation</option>
+        </select></div>
+        <div class="divider"></div>
+        <div class="field"><label>Extra context <span style="font-weight:400">(optional)</span></label><textarea id="ugc-context" rows="2" placeholder="Audience, tone, differentiators..."></textarea></div>
+        <div class="field vrow"><label>Variants</label><select id="ugc-variants"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option></select></div>
+        <button class="gbtn" id="ugc-btn" onclick="generateUGC()">Generate UGC Scripts</button>
+        <div class="sbox"><p><strong>Includes:</strong> Hook → relatable story → product intro → proof → CTA with filming directions.</p></div>
+      </div></div>
+      <div class="outcol" id="ugc-out"><div class="empty"><div class="ei">🎥</div><p>Fill in the script details<br>and generate your UGC ad scripts.</p></div></div>
+    </div>
+  </div>
+
+  <!-- TAB 4: FIX REJECTED AD -->
+  <div id="tab-fix" class="tabpanel">
+    <div class="layout">
+      <div><div class="panel">
+        <div class="ptitle">Rejected ad copy</div>
+        <div class="field">
+          <label>Paste or drag your rejected ad copy below</label>
+          <div class="dropzone" id="dropzone">
+            <span>📋</span>
+            <p>Drag &amp; drop your rejected ad here, or paste below</p>
+            <textarea id="fix-input" placeholder="Paste your rejected Facebook ad copy here..."></textarea>
+          </div>
         </div>
-      </div>
-      <div class="outcol" id="ugc-out">
-        <div class="empty"><div class="ei">🎥</div><p>Fill in the script details<br>and generate your UGC ad scripts.</p></div>
+        <div id="fix-issues-box" style="display:none">
+          <div style="font-size:12px;font-weight:700;color:var(--txt2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;">Issues detected</div>
+          <ul class="issue-list" id="fix-issues"></ul>
+        </div>
+        <div class="divider"></div>
+        <div class="field"><label>What is this ad for? <span style="font-weight:400">(optional)</span></label><input type="text" id="fix-context" placeholder="e.g. Weight loss supplement, moms 30-50" /></div>
+        <div class="field"><label>Rejection reason</label><select id="fix-reason">
+          <option value="general">General policy violation</option>
+          <option value="personal attributes">Personal attributes</option>
+          <option value="prohibited content">Prohibited content (miracle claims, guaranteed results)</option>
+          <option value="misleading claims">Misleading or exaggerated claims</option>
+          <option value="restricted category">Restricted category (health, finance)</option>
+          <option value="sensational content">Sensational or shocking content</option>
+          <option value="excessive punctuation">Excessive punctuation / ALL CAPS</option>
+        </select></div>
+        <button class="gbtn" id="fix-btn" onclick="fixAd()">Fix &amp; Make Compliant</button>
+        <div class="sbox"><p>AI rewrites your rejected ad to be fully Facebook compliant while keeping your core message intact. Fixed ads get a <strong>risk score</strong> and can be saved to the library.</p></div>
+      </div></div>
+      <div class="outcol" id="fix-out"><div class="empty"><div class="ei">🔧</div><p>Paste your rejected ad copy<br>and click <strong>Fix &amp; Make Compliant</strong>.</p></div></div>
+    </div>
+  </div>
+
+  <!-- TAB 5: APPEAL HELPER -->
+  <div id="tab-appeal" class="tabpanel">
+    <div class="layout">
+      <div><div class="panel">
+        <div class="ptitle">Appeal details</div>
+        <div class="field"><label>Your rejected ad copy</label><textarea id="appeal-ad" rows="5" placeholder="Paste the rejected ad copy here..."></textarea></div>
+        <div class="field"><label>Facebook's rejection reason <span style="font-weight:400">(from Ads Manager)</span></label><textarea id="appeal-fb-reason" rows="2" placeholder="e.g. Your ad violates our Personal Attributes policy..."></textarea></div>
+        <div class="field"><label>Your industry / product</label><input type="text" id="appeal-product" placeholder="e.g. Life insurance, weight loss program" /></div>
+        <div class="field"><label>Why your ad is compliant <span style="font-weight:400">(optional)</span></label><textarea id="appeal-defense" rows="2" placeholder="e.g. We target by interest not personal attributes..."></textarea></div>
+        <button class="gbtn" id="appeal-btn" onclick="generateAppeal()">Draft Appeal Message</button>
+        <div class="sbox"><p>Generates a professional, policy-aware appeal message ready to submit to Facebook's Ad Review team — with the right tone to maximize approval.</p></div>
+      </div></div>
+      <div class="outcol" id="appeal-out"><div class="empty"><div class="ei">📨</div><p>Fill in your rejection details<br>and draft a Facebook appeal message.</p></div></div>
+    </div>
+  </div>
+
+  <!-- TAB 6: AD LIBRARY -->
+  <div id="tab-library" class="tabpanel">
+    <div class="panel" style="margin-bottom:16px">
+      <div class="ptitle">Saved ad library</div>
+      <p style="font-size:13px;color:var(--txt2);margin-bottom:12px;">Save approved ads as reusable templates using the <strong>Save to Library</strong> button on any generated ad.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <select id="lib-filter-industry" onchange="renderLibrary()" style="width:auto;font-size:13px;padding:6px 10px">
+          <option value="">All industries</option>
+          <option value="insurance">Insurance</option>
+          <option value="finance">Finance</option>
+          <option value="health">Health &amp; Wellness</option>
+          <option value="weight loss">Weight Loss</option>
+          <option value="legal">Legal</option>
+          <option value="real estate">Real Estate</option>
+          <option value="ecommerce">E-commerce</option>
+          <option value="education">Education</option>
+          <option value="beauty">Beauty &amp; Skincare</option>
+          <option value="general">General</option>
+        </select>
+        <button class="abtn abtn-red" onclick="clearLibrary()">Clear All</button>
       </div>
     </div>
+    <div id="lib-out"><div class="lib-empty">No saved ads yet. Generate ads and click <strong>Save to Library</strong> to store them here.</div></div>
+  </div>
+
+  <!-- TAB 7: REJECTION LOG -->
+  <div id="tab-log" class="tabpanel">
+    <div class="panel" style="margin-bottom:16px">
+      <div class="ptitle">Rejection log</div>
+      <p style="font-size:13px;color:var(--txt2);margin-bottom:12px;">Track rejected ads and patterns. Click <strong>Log as Rejected</strong> on any generated ad to record it here.</p>
+      <div id="log-stats" class="stats-row"></div>
+      <button class="abtn abtn-red" onclick="clearLog()">Clear Log</button>
+    </div>
+    <div id="log-out"><div class="lib-empty">No rejected ads logged yet. Click <strong>Log as Rejected</strong> on any generated ad.</div></div>
   </div>
 
 </div>
@@ -251,50 +356,114 @@ function switchTab(id, el) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
   el.classList.add('active');
+  if (id === 'library') renderLibrary();
+  if (id === 'log') renderLog();
 }
 
 function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function copyText(btn, text) { navigator.clipboard.writeText(text).then(() => { btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = 'Copy', 1500); }); }
 
-function copyText(btn, text) {
-  navigator.clipboard.writeText(text).then(() => { btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = 'Copy', 1500); });
-}
+const industryRules = {
+  insurance: 'INSURANCE: Never guarantee coverage approval. Avoid "cheapest" without proof. No pressure tactics. Use "may qualify" not "you will get".',
+  finance: 'FINANCE: No guaranteed returns. No "get rich" language. Avoid targeting by credit score.',
+  health: 'HEALTH: Cannot claim to diagnose, treat, cure or prevent disease. Use "may help support". No before/after body images.',
+  'weight loss': 'WEIGHT LOSS: No guaranteed weight loss. No specific numbers as guaranteed. No body shaming. Cannot imply viewers are overweight.',
+  legal: 'LEGAL: Cannot guarantee case outcomes. No "you will win" claims. Include jurisdiction disclaimers.',
+  'real estate': 'REAL ESTATE: No discrimination by protected class. Investment claims need disclaimers.',
+  ecommerce: 'ECOMMERCE: No fake scarcity unless true. No fake reviews. Discount claims must be accurate.',
+  education: 'EDUCATION: Cannot guarantee job placement or income. Salary claims need sources.',
+  beauty: 'BEAUTY: Cannot claim to treat medical conditions. No anti-aging guarantees. "Clinically proven" needs citations.',
+  general: ''
+};
 
 function compliance(text) {
   const issues = [], warnings = [], lower = text.toLowerCase();
-  ['guaranteed results','miracle','cure','get rich','no risk','secret formula'].forEach(w => { if (lower.includes(w)) issues.push('Prohibited: "' + w + '"'); });
-  ['your weight','you are fat','your income','your age'].forEach(a => { if (lower.includes(a)) issues.push('Personal attribute: "' + a + '"'); });
+  ['guaranteed results','miracle','cure','get rich','no risk','secret formula','100% free','lose weight fast'].forEach(w => { if (lower.includes(w)) issues.push('Prohibited: "' + w + '"'); });
+  ['your weight','you are fat','your income','your age','you are overweight'].forEach(a => { if (lower.includes(a)) issues.push('Personal attribute: "' + a + '"'); });
   const caps = text.match(/\b[A-Z]{4,}\b/g);
   if (caps && caps.length > 2) warnings.push('Excessive ALL CAPS: ' + caps.slice(0,3).join(', '));
-  if ((text.match(/!/g)||[]).length > 4) warnings.push('Too many exclamation marks');
+  if ((text.match(/!/g)||[]).length > 3) warnings.push('Too many exclamation marks');
   ['loan','crypto','gambling','medication','supplement'].forEach(t => { if (lower.includes(t)) warnings.push('Restricted keyword: "' + t + '"'); });
   return { issues, warnings };
 }
 
-/* Calls our secure Netlify proxy instead of Anthropic directly */
+function calcRisk(text) {
+  let score = 1;
+  const lower = text.toLowerCase();
+  ['guaranteed','miracle','cure','get rich','secret','100% free','no risk'].forEach(w => { if (lower.includes(w)) score += 2; });
+  ['supplement','medication','loan','crypto','free','limited time','act now'].forEach(w => { if (lower.includes(w)) score += 1; });
+  ['your weight','your age','your income','you are fat'].forEach(w => { if (lower.includes(w)) score += 2; });
+  if ((text.match(/\b[A-Z]{4,}\b/g)||[]).length > 2) score += 1;
+  if ((text.match(/!/g)||[]).length > 3) score += 1;
+  return Math.min(10, Math.max(1, score));
+}
+
+function riskHtml(score) {
+  const pct = score * 10;
+  const cls = score <= 3 ? 'risk-low' : score <= 6 ? 'risk-med' : 'risk-high';
+  const label = score <= 3 ? 'Low Risk' : score <= 6 ? 'Medium Risk' : 'High Risk';
+  const color = score <= 3 ? '#1E7E34' : score <= 6 ? '#856404' : '#B71C1C';
+  return '<div class="risk-bar"><span class="risk-label">Risk Score</span><div class="risk-track"><div class="risk-fill ' + cls + '" style="width:' + pct + '%"></div></div><span style="font-size:12px;font-weight:700;color:' + color + ';min-width:30px;text-align:right">' + score + '/10</span><span class="badge ' + (score<=3?'bpass':score<=6?'bwarn':'bfail') + '">' + label + '</span></div>';
+}
+
 async function callAPI(prompt, maxTokens) {
-  const res = await fetch('/api/proxy', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      model: 'claude-haiku-4-5-20251001',
-      max_tokens: maxTokens || 1500,
-      messages: [{ role: 'user', content: prompt }]
-    })
-  });
+  const res = await fetch('/api/proxy', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: maxTokens || 1500, messages: [{ role: 'user', content: prompt }] }) });
   const data = await res.json();
   if (data.error) throw new Error(typeof data.error === 'object' ? JSON.stringify(data.error) : data.error);
   if (!data.content) throw new Error('No content: ' + JSON.stringify(data));
-  const raw = data.content.map(i => i.text || '').join('');
-  return raw.replace(/```json|```/g, '').trim();
+  return data.content.map(i => i.text || '').join('').replace(/```json|```/g, '').trim();
 }
 
-/* ── TAB 1: FACEBOOK AD ── */
-function renderFBCard(ad, i) {
+/* AD LIBRARY */
+function getLibrary() { try { return JSON.parse(localStorage.getItem('adLibrary') || '[]'); } catch(e) { return []; } }
+function saveLibrary(lib) { localStorage.setItem('adLibrary', JSON.stringify(lib)); }
+function saveToLibrary(text, industry, product) {
+  const lib = getLibrary();
+  lib.unshift({ id: Date.now(), text, industry: industry || 'general', product: product || 'Ad', date: new Date().toLocaleDateString() });
+  saveLibrary(lib);
+  alert('Saved to Ad Library!');
+}
+function deleteFromLibrary(id) { saveLibrary(getLibrary().filter(a => a.id !== id)); renderLibrary(); }
+function clearLibrary() { if (confirm('Clear all saved ads?')) { localStorage.removeItem('adLibrary'); renderLibrary(); } }
+function renderLibrary() {
+  const filter = document.getElementById('lib-filter-industry').value;
+  let lib = getLibrary();
+  if (filter) lib = lib.filter(a => a.industry === filter);
+  const out = document.getElementById('lib-out');
+  if (!lib.length) { out.innerHTML = '<div class="lib-empty">No saved ads' + (filter ? ' for this industry' : '') + '.</div>'; return; }
+  out.innerHTML = lib.map(a => '<div class="lib-card"><div class="lib-head"><span class="adlabel">' + esc(a.product) + '</span><span class="lib-meta">' + esc(a.date) + '</span></div><div class="lib-body">' + esc(a.text) + '</div><span class="lib-tag">' + esc(a.industry) + '</span><div class="adacts"><button class="abtn" onclick="copyText(this,' + JSON.stringify(a.text) + ')">Copy</button><button class="abtn abtn-red" onclick="deleteFromLibrary(' + a.id + ')">Delete</button></div></div>').join('');
+}
+
+/* REJECTION LOG */
+function getLog() { try { return JSON.parse(localStorage.getItem('rejectionLog') || '[]'); } catch(e) { return []; } }
+function saveLog(log) { localStorage.setItem('rejectionLog', JSON.stringify(log)); }
+function logRejection(text, reason, industry) {
+  const log = getLog();
+  log.unshift({ id: Date.now(), text, reason: reason || 'Unknown', industry: industry || 'general', date: new Date().toLocaleDateString() });
+  saveLog(log);
+  alert('Logged as rejected!');
+}
+function clearLog() { if (confirm('Clear rejection log?')) { localStorage.removeItem('rejectionLog'); renderLog(); } }
+function renderLog() {
+  const log = getLog();
+  const stats = document.getElementById('log-stats');
+  const out = document.getElementById('log-out');
+  const reasons = {};
+  log.forEach(l => { reasons[l.reason] = (reasons[l.reason]||0) + 1; });
+  const topReason = Object.keys(reasons).sort((a,b) => reasons[b]-reasons[a])[0] || 'None';
+  stats.innerHTML = '<div class="stat-card"><div class="stat-num">' + log.length + '</div><div class="stat-lbl">Total Logged</div></div><div class="stat-card"><div class="stat-num" style="font-size:13px;line-height:1.3">' + esc(topReason.split(' ').slice(0,3).join(' ')) + '</div><div class="stat-lbl">Top Reason</div></div><div class="stat-card"><div class="stat-num">' + Object.keys(reasons).length + '</div><div class="stat-lbl">Unique Reasons</div></div>';
+  if (!log.length) { out.innerHTML = '<div class="lib-empty">No rejected ads logged yet.</div>'; return; }
+  out.innerHTML = log.map(l => '<div class="log-item"><div class="log-head"><span class="log-reason">✗ ' + esc(l.reason) + '</span><span class="log-date">' + esc(l.date) + '</span></div><div class="log-preview">' + esc(l.text.substring(0,120)) + (l.text.length>120?'...':'') + '</div></div>').join('');
+}
+
+/* TAB 1: FACEBOOK AD */
+function renderFBCard(ad, i, industry, product) {
   const all = Object.values(ad).flat().join(' ');
   const { issues, warnings } = compliance(all);
+  const risk = calcRisk(all);
   let bc = 'bpass', bt = 'Compliant';
-  if (issues.length) { bc = 'bfail'; bt = issues.length + ' issue' + (issues.length > 1 ? 's' : ''); }
-  else if (warnings.length) { bc = 'bwarn'; bt = warnings.length + ' warning' + (warnings.length > 1 ? 's' : ''); }
+  if (issues.length) { bc = 'bfail'; bt = issues.length + ' issue' + (issues.length>1?'s':''); }
+  else if (warnings.length) { bc = 'bwarn'; bt = warnings.length + ' warning' + (warnings.length>1?'s':''); }
   let notes = '';
   if (issues.length || warnings.length) {
     notes = '<div class="cnotes">';
@@ -302,24 +471,16 @@ function renderFBCard(ad, i) {
     warnings.forEach(n => { notes += '<p class="nwarn">⚠ ' + esc(n) + '</p>'; });
     notes += '</div>';
   }
-  const bens = (ad.benefits || []).map(b => '<li>' + esc(b) + '</li>').join('');
+  const bens = (ad.benefits||[]).map(b => '<li>' + esc(b) + '</li>').join('');
   const plain = [ad.callout,'',ad.situation,'',ad.offerIntro,'',ad.emotionalQuestion,'',ad.transition,'',ad.offerHeadline,'',(ad.benefits||[]).join('\n'),'',ad.cta].join('\n');
-  return '<div class="adcard">'
-    + '<div class="adhead"><span class="adlabel">' + esc(ad.variantName||'Variant '+(i+1)) + '</span><span class="badge ' + bc + '">' + bt + '</span></div>'
-    + '<div class="adprev">'
-    + '<div class="callout blk">' + esc(ad.callout) + '</div>'
-    + '<div class="blk">' + esc(ad.situation) + '</div>'
-    + '<div class="blk">' + esc(ad.offerIntro) + '</div>'
-    + '<div class="blk">' + esc(ad.emotionalQuestion) + '</div>'
-    + '<div class="blk">' + esc(ad.transition) + '</div>'
-    + '<div class="blk offhl">' + esc(ad.offerHeadline) + '</div>'
-    + '<ul>' + bens + '</ul>'
-    + '<div class="ctaline">' + esc(ad.cta) + '</div>'
-    + '</div>' + notes
-    + '<div class="adacts"><button class="abtn" onclick="copyText(this,' + JSON.stringify(plain) + ')">Copy</button></div></div>';
+  return '<div class="adcard"><div class="adhead"><span class="adlabel">' + esc(ad.variantName||'Variant '+(i+1)) + '</span><span class="badge ' + bc + '">' + bt + '</span></div>'
+    + '<div class="adprev"><div class="callout blk">' + esc(ad.callout) + '</div><div class="blk">' + esc(ad.situation) + '</div><div class="blk">' + esc(ad.offerIntro) + '</div><div class="blk">' + esc(ad.emotionalQuestion) + '</div><div class="blk">' + esc(ad.transition) + '</div><div class="blk offhl">' + esc(ad.offerHeadline) + '</div><ul>' + bens + '</ul><div class="ctaline">' + esc(ad.cta) + '</div></div>'
+    + notes + riskHtml(risk)
+    + '<div class="adacts"><button class="abtn" onclick="copyText(this,' + JSON.stringify(plain) + ')">Copy</button><button class="abtn" onclick="saveToLibrary(' + JSON.stringify(plain) + ',' + JSON.stringify(industry) + ',' + JSON.stringify(product) + ')">Save to Library</button><button class="abtn abtn-red" onclick="logRejection(' + JSON.stringify(plain) + ',\'general\',' + JSON.stringify(industry) + ')">Log as Rejected</button></div></div>';
 }
 
 async function generateFB() {
+  const industry = document.getElementById('fb-industry').value;
   const product = document.getElementById('fb-product').value.trim();
   const audience = document.getElementById('fb-audience').value.trim();
   const pain = document.getElementById('fb-pain').value.trim();
@@ -331,56 +492,46 @@ async function generateFB() {
   const btn = document.getElementById('fb-btn');
   btn.disabled = true; btn.textContent = 'Generating...';
   document.getElementById('fb-out').innerHTML = '<div class="loading"><div class="spin"></div><p>Writing ad copies...</p></div>';
-  const prompt = `You are a direct response Facebook ad copywriter. Generate ${vc} ad variant(s) using EXACTLY this 8-step structure:
-1. callout: Scroll-stopping audience callout WITH relevant emojis
+  const iRule = industryRules[industry] || '';
+  const prompt = `You are a Facebook ad copywriter. Generate ${vc} ad variant(s) using EXACTLY this 8-step structure:
+1. callout: Scroll-stopping audience callout WITH emojis
 2. situation: 1-2 relatable sentences about their struggle
-3. offerIntro: 1 friendly sentence introducing the offer as a solution
-4. emotionalQuestion: 1 emotional question tied to their pain
+3. offerIntro: 1 friendly sentence introducing the offer
+4. emotionalQuestion: 1 emotional question tied to pain
 5. transition: Exactly "Here's the good news..."
 6. offerHeadline: Short punchy offer headline (no emojis)
-7. benefits: Array of 3-5 items each starting with ✅
-8. cta: "👉 Click Learn More to [specific action]"
-Tone: Simple, friendly, direct response, slightly emotional. No hype. No prohibited claims.
-Product: ${product}
-Audience: ${audience}
-Pain point: ${pain}
-Offer: ${offer}
-${benefits ? 'Benefits:\n' + benefits : ''}
-${context ? 'Context: ' + context : ''}
-Return ONLY valid JSON array, no markdown:
-[{"variantName":"Variant A","callout":"...","situation":"...","offerIntro":"...","emotionalQuestion":"...","transition":"Here's the good news...","offerHeadline":"...","benefits":["✅ ..."],"cta":"👉 Click Learn More to ..."}]`;
+7. benefits: Array of 3-5 items each starting with checkmark emoji
+8. cta: "pointing right emoji Click Learn More to [action]"
+Industry: ${industry}. ${iRule}
+Product: ${product}. Audience: ${audience}. Pain: ${pain}. Offer: ${offer}.
+${benefits ? 'Benefits: ' + benefits : ''}${context ? ' Context: ' + context : ''}
+Strictly follow Facebook policies. No prohibited claims, no personal attributes, no excessive punctuation.
+Return ONLY valid JSON array: [{"variantName":"Variant A","callout":"...","situation":"...","offerIntro":"...","emotionalQuestion":"...","transition":"Here's the good news...","offerHeadline":"...","benefits":["..."],"cta":"..."}]`;
   try {
     const clean = await callAPI(prompt, 1500);
     const ads = JSON.parse(clean);
-    let html = '<p class="vtag">' + ads.length + ' variant' + (ads.length > 1 ? 's' : '') + ' generated</p>';
-    ads.forEach((ad, i) => { html += renderFBCard(ad, i); });
+    let html = '<p class="vtag">' + ads.length + ' variant' + (ads.length>1?'s':'') + ' generated</p>';
+    ads.forEach((ad, i) => { html += renderFBCard(ad, i, industry, product); });
     document.getElementById('fb-out').innerHTML = html;
-  } catch(e) {
-    document.getElementById('fb-out').innerHTML = '<div class="errmsg">' + (e.message||JSON.stringify(e)) + '</div>';
-  }
+  } catch(e) { document.getElementById('fb-out').innerHTML = '<div class="errmsg">' + (e.message||JSON.stringify(e)) + '</div>'; }
   btn.disabled = false; btn.textContent = 'Generate Facebook Ad Copies';
 }
 
-/* ── TAB 2: ISA CALLING SCRIPT ── */
+/* TAB 2: ISA SCRIPT */
 function renderISACard(script) {
-  let html = '<div class="adcard"><div class="adhead"><span class="adlabel">📞 ' + esc(script.title || 'Calling Script') + '</span><span class="badge bpass">Ready to use</span></div><div class="scriptprev">';
-  (script.sections || []).forEach(sec => {
-    html += '<div class="script-section">';
-    const tagClass = sec.speaker === 'AGENT' ? 'agent' : sec.speaker === 'PROSPECT' ? 'prospect' : 'note';
-    html += '<div class="script-tag ' + tagClass + '">' + esc(sec.speaker || 'NOTE') + '</div>';
-    const lineClass = sec.speaker === 'NOTE' ? 'note-text' : '';
-    html += '<div class="script-line ' + lineClass + '">' + esc(sec.line) + '</div>';
-    html += '</div>';
+  let html = '<div class="adcard"><div class="adhead"><span class="adlabel">📞 ' + esc(script.title||'Calling Script') + '</span><span class="badge bpass">Ready to use</span></div><div class="scriptprev">';
+  (script.sections||[]).forEach(sec => {
+    const tc = sec.speaker==='AGENT'?'agent':sec.speaker==='PROSPECT'?'prospect':'note';
+    html += '<div class="script-section"><div class="script-tag ' + tc + '">' + esc(sec.speaker||'NOTE') + '</div><div class="script-line ' + (sec.speaker==='NOTE'?'note-text':'') + '">' + esc(sec.line) + '</div></div>';
   });
-  const plain = (script.sections || []).map(s => '[' + s.speaker + ']\n' + s.line).join('\n\n');
-  html += '</div><div class="adacts"><button class="abtn" onclick="copyText(this,' + JSON.stringify(plain) + ')">Copy Script</button></div></div>';
-  return html;
+  const plain = (script.sections||[]).map(s => '[' + s.speaker + ']\n' + s.line).join('\n\n');
+  return html + '</div><div class="adacts"><button class="abtn" onclick="copyText(this,' + JSON.stringify(plain) + ')">Copy Script</button></div></div>';
 }
 
 async function generateISA() {
   const product = document.getElementById('isa-product').value.trim();
   const leadtype = document.getElementById('isa-leadtype').value;
-  const agent = document.getElementById('isa-agent').value.trim() || 'the agent';
+  const agent = document.getElementById('isa-agent').value.trim() || 'Agent';
   const company = document.getElementById('isa-company').value.trim() || 'our company';
   const pain = document.getElementById('isa-pain').value.trim();
   const offer = document.getElementById('isa-offer').value.trim();
@@ -390,44 +541,29 @@ async function generateISA() {
   const btn = document.getElementById('isa-btn');
   btn.disabled = true; btn.textContent = 'Generating...';
   document.getElementById('isa-out').innerHTML = '<div class="loading"><div class="spin"></div><p>Writing calling script...</p></div>';
-  const prompt = `You are an expert insurance sales trainer. Write a complete ISA calling script.
-Insurance product: ${product}
-Lead type: ${leadtype}
-Agent name: ${agent}
-Company: ${company}
-Prospect pain point: ${pain}
-Key offer/hook: ${offer}
-${objections ? 'Common objections to handle:\n' + objections : ''}
-${context ? 'Additional context: ' + context : ''}
-Include these sections: Opening hook, Permission/pattern interrupt, Rapport builder, Discovery question, Empathy bridge, Offer introduction, Objection handler(s), Trial close, Hard close/appointment set, Follow-up/voicemail line.
-Format each line as JSON with "speaker" (AGENT, PROSPECT, or NOTE) and "line" fields.
-Return ONLY valid JSON, no markdown:
-{"title":"${product} - ${leadtype} Script","sections":[{"speaker":"AGENT","line":"..."},{"speaker":"NOTE","line":"[Tip: ...]"},{"speaker":"PROSPECT","line":"..."}]}`;
+  const prompt = `Write a complete ISA calling script for insurance sales.
+Product: ${product}. Lead type: ${leadtype}. Agent: ${agent}. Company: ${company}. Pain: ${pain}. Offer: ${offer}.
+${objections ? 'Objections: ' + objections : ''}${context ? ' Context: ' + context : ''}
+Include: Opening hook, Permission/pattern interrupt, Rapport builder, Discovery question, Empathy bridge, Offer intro, Objection handlers, Trial close, Hard close, Voicemail line.
+Return ONLY valid JSON: {"title":"...","sections":[{"speaker":"AGENT","line":"..."},{"speaker":"NOTE","line":"[Tip]"},{"speaker":"PROSPECT","line":"..."}]}`;
   try {
     const clean = await callAPI(prompt, 2000);
-    const script = JSON.parse(clean);
-    document.getElementById('isa-out').innerHTML = '<p class="vtag">Script generated</p>' + renderISACard(script);
-  } catch(e) {
-    document.getElementById('isa-out').innerHTML = '<div class="errmsg">' + (e.message||JSON.stringify(e)) + '</div>';
-  }
+    document.getElementById('isa-out').innerHTML = '<p class="vtag">Script generated</p>' + renderISACard(JSON.parse(clean));
+  } catch(e) { document.getElementById('isa-out').innerHTML = '<div class="errmsg">' + (e.message||JSON.stringify(e)) + '</div>'; }
   btn.disabled = false; btn.textContent = 'Generate Calling Script';
 }
 
-/* ── TAB 3: UGC AD SCRIPT ── */
+/* TAB 3: UGC SCRIPT */
 function renderUGCCard(script, i) {
-  let html = '<div class="adcard"><div class="adhead"><span class="adlabel">🎥 ' + esc(script.variantName || 'Script ' + (i+1)) + '</span><span class="badge bpass">' + esc(script.duration || '') + '</span></div><div class="ugcprev">';
-  (script.sections || []).forEach(sec => {
-    html += '<div class="ugc-section">';
-    const tagMap = { hook: 'ugc-hook', story: 'ugc-story', proof: 'ugc-proof', cta: 'ugc-cta', direction: 'ugc-dir' };
-    const tc = tagMap[sec.type] || 'ugc-story';
-    html += '<div class="ugc-tag ' + tc + '">' + esc(sec.label || sec.type) + '</div>';
+  const tagMap = { hook:'ugc-hook', story:'ugc-story', proof:'ugc-proof', cta:'ugc-cta' };
+  let html = '<div class="adcard"><div class="adhead"><span class="adlabel">🎥 ' + esc(script.variantName||'Script '+(i+1)) + '</span><span class="badge bpass">' + esc(script.duration||'') + '</span></div><div class="ugcprev">';
+  (script.sections||[]).forEach(sec => {
+    html += '<div class="ugc-section"><div class="ugc-tag ' + (tagMap[sec.type]||'ugc-story') + '">' + esc(sec.label||sec.type) + '</div>';
     if (sec.direction) html += '<div style="font-size:12px;font-style:italic;color:var(--txt2);margin-bottom:4px;">' + esc(sec.direction) + '</div>';
-    html += '<div style="font-size:14px;color:var(--txt);line-height:1.75;">' + esc(sec.script) + '</div>';
-    html += '</div>';
+    html += '<div style="font-size:14px;color:var(--txt);line-height:1.75;">' + esc(sec.script) + '</div></div>';
   });
-  const plain = (script.sections || []).map(s => '[' + (s.label||s.type).toUpperCase() + ']\n' + (s.direction ? '(Direction: ' + s.direction + ')\n' : '') + s.script).join('\n\n');
-  html += '</div><div class="adacts"><button class="abtn" onclick="copyText(this,' + JSON.stringify(plain) + ')">Copy Script</button></div></div>';
-  return html;
+  const plain = (script.sections||[]).map(s => '[' + (s.label||s.type).toUpperCase() + ']\n' + (s.direction?'('+s.direction+')\n':'') + s.script).join('\n\n');
+  return html + '</div><div class="adacts"><button class="abtn" onclick="copyText(this,' + JSON.stringify(plain) + ')">Copy Script</button></div></div>';
 }
 
 async function generateUGC() {
@@ -444,29 +580,98 @@ async function generateUGC() {
   const btn = document.getElementById('ugc-btn');
   btn.disabled = true; btn.textContent = 'Generating...';
   document.getElementById('ugc-out').innerHTML = '<div class="loading"><div class="spin"></div><p>Writing UGC scripts...</p></div>';
-  const prompt = `You are an expert UGC ad scriptwriter. Generate ${vc} UGC video ad script(s).
-Product: ${product}
-Creator persona: ${persona}
-Platform: ${platform}
-Video length: ${length}
-Hook style: ${hook}
-Main benefit: ${benefit}
-CTA: ${cta}
-${context ? 'Context: ' + context : ''}
-Each script must have sections: Hook (0-3s), Relatable Story, Product Discovery, Results/Benefit, Call to Action.
-Each section needs "type" (hook/story/proof/cta), "label", "script" (exact words), "direction" (filming note).
-Return ONLY valid JSON array, no markdown:
-[{"variantName":"Script A","duration":"${length}","sections":[{"type":"hook","label":"Hook (0–3s)","script":"...","direction":"..."},...]}]`;
+  const prompt = `Generate ${vc} UGC video ad script(s). Product: ${product}. Persona: ${persona}. Platform: ${platform}. Length: ${length}. Hook: ${hook}. Benefit: ${benefit}. CTA: ${cta}.${context?' Context: '+context:''}
+Sections: Hook(0-3s), Relatable Story, Product Discovery, Results/Benefit, Call to Action.
+Each needs: type(hook/story/proof/cta), label, script(exact words), direction(filming note).
+Return ONLY valid JSON array: [{"variantName":"Script A","duration":"${length}","sections":[{"type":"hook","label":"Hook (0-3s)","script":"...","direction":"..."},...]}]`;
   try {
     const clean = await callAPI(prompt, 2000);
     const scripts = JSON.parse(clean);
-    let html = '<p class="vtag">' + scripts.length + ' script' + (scripts.length > 1 ? 's' : '') + ' generated</p>';
+    let html = '<p class="vtag">' + scripts.length + ' script' + (scripts.length>1?'s':'') + ' generated</p>';
     scripts.forEach((s, i) => { html += renderUGCCard(s, i); });
     document.getElementById('ugc-out').innerHTML = html;
-  } catch(e) {
-    document.getElementById('ugc-out').innerHTML = '<div class="errmsg">' + (e.message||JSON.stringify(e)) + '</div>';
-  }
+  } catch(e) { document.getElementById('ugc-out').innerHTML = '<div class="errmsg">' + (e.message||JSON.stringify(e)) + '</div>'; }
   btn.disabled = false; btn.textContent = 'Generate UGC Scripts';
+}
+
+/* TAB 4: FIX REJECTED AD */
+const dropzone = document.getElementById('dropzone');
+const fixInput = document.getElementById('fix-input');
+if (dropzone) {
+  dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
+  dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+  dropzone.addEventListener('drop', e => { e.preventDefault(); dropzone.classList.remove('dragover'); const t = e.dataTransfer.getData('text'); if (t) { fixInput.value = t; checkIssues(t); } });
+  fixInput.addEventListener('input', () => checkIssues(fixInput.value));
+}
+function checkIssues(text) {
+  const { issues, warnings } = compliance(text);
+  const box = document.getElementById('fix-issues-box');
+  const list = document.getElementById('fix-issues');
+  if (issues.length || warnings.length) {
+    box.style.display = 'block';
+    list.innerHTML = issues.map(i => '<li class="issue-item">✗ ' + esc(i) + '</li>').join('') + warnings.map(w => '<li class="warn-item">⚠ ' + esc(w) + '</li>').join('');
+  } else { box.style.display = 'none'; }
+}
+async function fixAd() {
+  const adCopy = document.getElementById('fix-input').value.trim();
+  const context = document.getElementById('fix-context').value.trim();
+  const reason = document.getElementById('fix-reason').value;
+  if (!adCopy) { alert('Please paste your rejected ad copy first.'); return; }
+  const btn = document.getElementById('fix-btn');
+  btn.disabled = true; btn.textContent = 'Fixing...';
+  document.getElementById('fix-out').innerHTML = '<div class="loading"><div class="spin"></div><p>Rewriting your ad copy...</p></div>';
+  const prompt = `You are a Facebook ad compliance expert. Rewrite this rejected ad to be fully compliant while keeping the core message.
+Rejected ad: ${adCopy}
+Rejection reason: ${reason}${context ? '. Context: ' + context : ''}
+Rules: No personal attributes, no prohibited claims, no excessive punctuation, no ALL CAPS, no misleading claims. Use "may help", "can support". Follow 8-step format where possible.
+Return ONLY valid JSON: {"issues_found":["..."],"rewritten":"full ad with newlines as \\n","changes_made":["..."]}`;
+  try {
+    const clean = await callAPI(prompt, 1500);
+    const result = JSON.parse(clean);
+    const plain = result.rewritten || '';
+    const risk = calcRisk(plain);
+    const html = '<div class="adcard"><div class="adhead"><span class="adlabel">🔧 Fixed Ad Copy</span><span class="badge bpass">Rewritten</span></div><div style="padding:14px">'
+      + '<div class="fix-section"><div class="fix-tag">Issues fixed</div><ul class="issue-list">' + (result.issues_found||[]).map(i => '<li class="issue-item">✗ ' + esc(i) + '</li>').join('') + '</ul></div>'
+      + '<div class="fix-section"><div class="fix-tag">Rewritten ad</div><div class="fix-rewritten">' + esc(plain).replace(/\\n/g,'<br>').replace(/\n/g,'<br>') + '</div></div>'
+      + '<div class="fix-section"><div class="fix-tag">Changes made</div><ul style="margin-top:6px;padding-left:2px;list-style:none">' + (result.changes_made||[]).map(c => '<li style="font-size:13px;color:var(--txt2);margin-bottom:3px;">✓ ' + esc(c) + '</li>').join('') + '</ul></div>'
+      + '</div>' + riskHtml(risk)
+      + '<div class="adacts"><button class="abtn" onclick="copyText(this,' + JSON.stringify(plain) + ')">Copy Fixed Ad</button><button class="abtn" onclick="saveToLibrary(' + JSON.stringify(plain) + ',\'general\',\'Fixed Ad\')">Save to Library</button></div></div>';
+    document.getElementById('fix-out').innerHTML = html;
+  } catch(e) { document.getElementById('fix-out').innerHTML = '<div class="errmsg">' + (e.message||JSON.stringify(e)) + '</div>'; }
+  btn.disabled = false; btn.textContent = 'Fix & Make Compliant';
+}
+
+/* TAB 5: APPEAL HELPER */
+async function generateAppeal() {
+  const ad = document.getElementById('appeal-ad').value.trim();
+  const fbReason = document.getElementById('appeal-fb-reason').value.trim();
+  const product = document.getElementById('appeal-product').value.trim();
+  const defense = document.getElementById('appeal-defense').value.trim();
+  if (!ad || !fbReason) { alert('Please fill in the rejected ad and Facebook rejection reason.'); return; }
+  const btn = document.getElementById('appeal-btn');
+  btn.disabled = true; btn.textContent = 'Drafting...';
+  document.getElementById('appeal-out').innerHTML = '<div class="loading"><div class="spin"></div><p>Drafting appeal message...</p></div>';
+  const prompt = `Write a professional Facebook Ad appeal message for the Ad Review team.
+Rejected ad: ${ad}
+Facebook rejection reason: ${fbReason}
+Product: ${product}${defense ? '. Advertiser defense: ' + defense : ''}
+The appeal should: be professional and respectful, reference the specific policy, explain why the ad does NOT violate it, highlight compliance, be under 250 words, end with a clear request for manual review.
+Return ONLY valid JSON: {"subject":"Appeal Subject Line","appeal":"full message with \\n for paragraphs","tips":["tip 1","tip 2","tip 3"]}`;
+  try {
+    const clean = await callAPI(prompt, 1000);
+    const result = JSON.parse(clean);
+    const plain = 'Subject: ' + result.subject + '\n\n' + result.appeal;
+    const tipsHtml = (result.tips||[]).map(t => '<li style="font-size:13px;color:var(--txt2);margin-bottom:4px;">💡 ' + esc(t) + '</li>').join('');
+    const html = '<div class="adcard"><div class="adhead"><span class="adlabel">📨 Appeal Message</span><span class="badge bpass">Ready to submit</span></div><div style="padding:14px">'
+      + '<div style="font-size:12px;font-weight:700;color:var(--txt2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px;">Subject</div>'
+      + '<div style="font-size:14px;font-weight:600;color:var(--primary);margin-bottom:12px;">' + esc(result.subject) + '</div>'
+      + '<div style="font-size:12px;font-weight:700;color:var(--txt2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;">Appeal Message</div>'
+      + '<div class="appeal-box">' + esc(result.appeal).replace(/\\n/g,'<br>').replace(/\n/g,'<br>') + '</div>'
+      + (tipsHtml ? '<div style="margin-top:12px;font-size:12px;font-weight:700;color:var(--txt2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;">Tips for approval</div><ul style="list-style:none;padding:0">' + tipsHtml + '</ul>' : '')
+      + '</div><div class="adacts"><button class="abtn" onclick="copyText(this,' + JSON.stringify(plain) + ')">Copy Appeal</button></div></div>';
+    document.getElementById('appeal-out').innerHTML = html;
+  } catch(e) { document.getElementById('appeal-out').innerHTML = '<div class="errmsg">' + (e.message||JSON.stringify(e)) + '</div>'; }
+  btn.disabled = false; btn.textContent = 'Draft Appeal Message';
 }
 </script>
 </body>
