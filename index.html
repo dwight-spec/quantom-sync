@@ -282,7 +282,8 @@ async function callAPI(prompt, maxTokens) {
     })
   });
   const data = await res.json();
-  if (data.error) throw new Error(data.error);
+  if (data.error) throw new Error(typeof data.error === 'object' ? JSON.stringify(data.error) : data.error);
+  if (!data.content) throw new Error('No content: ' + JSON.stringify(data));
   const raw = data.content.map(i => i.text || '').join('');
   return raw.replace(/```json|```/g, '').trim();
 }
@@ -355,7 +356,7 @@ Return ONLY valid JSON array, no markdown:
     ads.forEach((ad, i) => { html += renderFBCard(ad, i); });
     document.getElementById('fb-out').innerHTML = html;
   } catch(e) {
-    document.getElementById('fb-out').innerHTML = '<div class="errmsg">Error: ' + e.message + '. Please try again.</div>';
+    document.getElementById('fb-out').innerHTML = '<div class="errmsg">' + (e.message||JSON.stringify(e)) + '</div>';
   }
   btn.disabled = false; btn.textContent = 'Generate Facebook Ad Copies';
 }
@@ -407,7 +408,7 @@ Return ONLY valid JSON, no markdown:
     const script = JSON.parse(clean);
     document.getElementById('isa-out').innerHTML = '<p class="vtag">Script generated</p>' + renderISACard(script);
   } catch(e) {
-    document.getElementById('isa-out').innerHTML = '<div class="errmsg">Error: ' + e.message + '. Please try again.</div>';
+    document.getElementById('isa-out').innerHTML = '<div class="errmsg">' + (e.message||JSON.stringify(e)) + '</div>';
   }
   btn.disabled = false; btn.textContent = 'Generate Calling Script';
 }
@@ -463,7 +464,7 @@ Return ONLY valid JSON array, no markdown:
     scripts.forEach((s, i) => { html += renderUGCCard(s, i); });
     document.getElementById('ugc-out').innerHTML = html;
   } catch(e) {
-    document.getElementById('ugc-out').innerHTML = '<div class="errmsg">Error: ' + e.message + '. Please try again.</div>';
+    document.getElementById('ugc-out').innerHTML = '<div class="errmsg">' + (e.message||JSON.stringify(e)) + '</div>';
   }
   btn.disabled = false; btn.textContent = 'Generate UGC Scripts';
 }
