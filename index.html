@@ -8,26 +8,35 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
   --primary: #1E63B8; --primary-dark: #174e93; --secondary: #C02A5A;
-  --accent: #7A3F8A; --gradient: linear-gradient(135deg, #1E63B8, #C02A5A);
+  --accent: #7A3F8A; --gradient: linear-gradient(135deg, #C02A5A, #8B0000);
   --bg: #ffffff; --bg2: #f4f6fb; --bg3: #eef1f8;
   --txt: #111827; --txt2: #5a6478;
   --bdr: rgba(30,99,184,0.14); --bdr2: rgba(30,99,184,0.28);
   --r: 8px; --rl: 12px; --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
-body { font-family: var(--font); background: var(--bg2); color: var(--txt); min-height: 100vh; padding: 0; }
-.topbar { background: var(--gradient); padding: 1.5rem 1.5rem 0; }
-.topbar-inner { max-width: 1100px; margin: 0 auto; }
-.topbar h1 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 4px; }
-.topbar p { font-size: 14px; color: rgba(255,255,255,0.82); margin-bottom: 1.25rem; }
-.tabs { display: flex; gap: 3px; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; }
-.tab { padding: 9px 14px; font-size: 12px; font-weight: 600; cursor: pointer; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.75); border: none; border-radius: 8px 8px 0 0; font-family: var(--font); transition: all .15s; white-space: nowrap; }
-.tab:hover { background: rgba(255,255,255,0.25); color: #fff; }
-.tab.active { background: var(--bg2); color: var(--primary); }
-.app { max-width: 1100px; margin: 0 auto; padding: 1.25rem 1rem 2rem; }
+body { font-family: var(--font); background: var(--bg2); color: var(--txt); min-height: 100vh; padding: 0; display: flex; flex-direction: column; }
+
+/* SIDEBAR LAYOUT */
+.dashboard { display: flex; min-height: 100vh; }
+.sidebar { width: 240px; min-width: 240px; background: linear-gradient(180deg, #5B4A8A 0%, #C02A5A 100%); display: flex; flex-direction: column; min-height: 100vh; }
+.sidebar-brand { padding: 1.5rem 1.25rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.12); }
+.sidebar-brand h1 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+.sidebar-brand p { font-size: 11px; color: rgba(255,255,255,0.65); }
+.sidebar-nav { padding: 1rem 0; flex: 1; }
+.nav-section { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: .1em; padding: 0 1.25rem; margin: 1rem 0 0.4rem; }
+.nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 1.25rem; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7); cursor: pointer; border: none; background: none; font-family: var(--font); width: 100%; text-align: left; transition: all .15s; border-left: 3px solid transparent; letter-spacing: 0.04em; }
+.nav-item:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.nav-item.active { background: rgba(255,255,255,0.15); color: #fff; border-left-color: #fff; font-weight: 700; }
+.main-area { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.topbar { background: #fff; border-bottom: 1px solid var(--bdr); padding: 0.85rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+.topbar-title { font-size: 16px; font-weight: 700; color: var(--txt); }
+.topbar-sub { font-size: 12px; color: var(--txt2); margin-top: 1px; }
+.content-area { flex: 1; padding: 1.5rem; overflow-y: auto; }
 .tabpanel { display: none; }
 .tabpanel.active { display: block; }
-.layout { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
-@media (max-width: 720px) { .layout { grid-template-columns: 1fr; } .tab { padding: 7px 10px; font-size: 11px; } }
+.layout { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px; align-items: start; }
+@media (max-width: 900px) { .sidebar { width: 200px; min-width: 200px; } }
+@media (max-width: 720px) { .dashboard { flex-direction: column; } .sidebar { width: 100%; min-height: auto; } .layout { grid-template-columns: 1fr; } .nav-item { padding: 8px 1rem; } }
 .panel { background: var(--bg); border: 1px solid var(--bdr); border-radius: var(--rl); padding: 1.25rem; box-shadow: 0 1px 4px rgba(30,99,184,0.06); }
 .ptitle { font-size: 11px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: .09em; margin-bottom: 14px; border-left: 3px solid var(--primary); padding-left: 8px; }
 .field { margin-bottom: 13px; }
@@ -132,23 +141,51 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--p
 </head>
 <body>
 
-<div class="topbar">
-  <div class="topbar-inner">
-    <h1>Quantom Sync LLC</h1>
-    <p>Facebook Ad Compliance Hub</p>
-  </div>
-  <div class="tabs">
-    <button class="tab active" onclick="switchTab('fb',this)">📢 Facebook Ad</button>
-    <button class="tab" onclick="switchTab('isa',this)">📞 ISA Script</button>
-    <button class="tab" onclick="switchTab('ugc',this)">🎥 UGC Script</button>
-    <button class="tab" onclick="switchTab('fix',this)">🔧 Fix Rejected Ad</button>
-    <button class="tab" onclick="switchTab('appeal',this)">📨 Appeal Helper</button>
-    <button class="tab" onclick="switchTab('library',this)">📚 Ad Library</button>
-    <button class="tab" onclick="switchTab('log',this)">📋 Rejection Log</button>
-  </div>
-</div>
+<div class="dashboard">
 
-<div class="app">
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-brand">
+      <h1>Quantom Sync LLC</h1>
+      <p>Ad Compliance Hub</p>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section">Generate</div>
+      <button class="nav-item active" onclick="switchTab('fb',this)" data-title="Facebook Ad Copy" data-sub="8-step direct response format">
+        FACEBOOK AD
+      </button>
+      <button class="nav-item" onclick="switchTab('isa',this)" data-title="ISA Calling Script" data-sub="Insurance sales agent scripts">
+        ISA SCRIPT
+      </button>
+      <button class="nav-item" onclick="switchTab('ugc',this)" data-title="UGC Ad Script" data-sub="Video ad scripts for social media">
+        UGC SCRIPT
+      </button>
+      <div class="nav-section">Compliance</div>
+      <button class="nav-item" onclick="switchTab('fix',this)" data-title="Fix Rejected Ad" data-sub="Rewrite rejected ads to be compliant">
+        FIX REJECTED AD
+      </button>
+      <button class="nav-item" onclick="switchTab('appeal',this)" data-title="Appeal Helper" data-sub="Draft Facebook appeal messages">
+        APPEAL HELPER
+      </button>
+      <div class="nav-section">Library</div>
+      <button class="nav-item" onclick="switchTab('library',this)" data-title="Ad Library" data-sub="Saved approved ad templates">
+        AD LIBRARY
+      </button>
+      <button class="nav-item" onclick="switchTab('log',this)" data-title="Rejection Log" data-sub="Track and analyse rejections">
+        REJECTION LOG
+      </button>
+    </nav>
+  </div>
+
+  <!-- MAIN AREA -->
+  <div class="main-area">
+    <div class="topbar">
+      <div>
+        <div class="topbar-title" id="page-title">Facebook Ad Copy</div>
+        <div class="topbar-sub" id="page-sub">8-step direct response format</div>
+      </div>
+    </div>
+    <div class="content-area">
 
   <!-- TAB 1: FACEBOOK AD -->
   <div id="tab-fb" class="tabpanel active">
@@ -173,14 +210,10 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--p
         <div class="field"><label>Target audience</label><input type="text" id="fb-audience" placeholder="e.g. Parents aged 30-50" /></div>
         <div class="field"><label>Main pain point</label><input type="text" id="fb-pain" placeholder="e.g. Worried about family's financial future" /></div>
         <div class="field"><label>Offer / key benefit</label><input type="text" id="fb-offer" placeholder="e.g. Get covered from $1/day, free quote" /></div>
-        <div class="field"><label>Checkmark benefits <span style="font-weight:400">(one per line)</span></label>
-          <textarea id="fb-benefits" rows="4" placeholder="No medical exam required&#10;Coverage starts immediately&#10;Flexible payment plans&#10;Trusted by 10,000+ families"></textarea>
-        </div>
         <div class="divider"></div>
         <div class="field"><label>Extra context <span style="font-weight:400">(optional)</span></label><textarea id="fb-context" rows="2" placeholder="Brand voice, promotions, niche details..."></textarea></div>
         <div class="field vrow"><label>Variants</label><select id="fb-variants"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option></select></div>
-        <button class="gbtn" id="fb-btn" onclick="generateFB()">Generate Facebook Ad Copies</button>
-        <div class="sbox"><p><strong>8-step format</strong> with industry-specific compliance rules. Every ad gets a <strong>risk score</strong> and can be saved to the Ad Library.</p></div>
+        <button class="gbtn" id="fb-btn" onclick="generateFB()">Generate</button>
       </div></div>
       <div class="outcol" id="fb-out"><div class="empty"><div class="ei">📢</div><p>Fill in your campaign details<br>and generate Facebook ad copies.</p></div></div>
     </div>
@@ -348,14 +381,20 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--p
     <div id="log-out"><div class="lib-empty">No rejected ads logged yet. Click <strong>Log as Rejected</strong> on any generated ad.</div></div>
   </div>
 
-</div>
+    </div><!-- /content-area -->
+  </div><!-- /main-area -->
+</div><!-- /dashboard -->
 
 <script>
 function switchTab(id, el) {
   document.querySelectorAll('.tabpanel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(t => t.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
   el.classList.add('active');
+  const title = el.getAttribute('data-title') || '';
+  const sub = el.getAttribute('data-sub') || '';
+  document.getElementById('page-title').textContent = title;
+  document.getElementById('page-sub').textContent = sub;
   if (id === 'library') renderLibrary();
   if (id === 'log') renderLog();
 }
@@ -485,7 +524,6 @@ async function generateFB() {
   const audience = document.getElementById('fb-audience').value.trim();
   const pain = document.getElementById('fb-pain').value.trim();
   const offer = document.getElementById('fb-offer').value.trim();
-  const benefits = document.getElementById('fb-benefits').value.trim();
   const context = document.getElementById('fb-context').value.trim();
   const vc = parseInt(document.getElementById('fb-variants').value);
   if (!product || !audience || !pain || !offer) { alert('Please fill in product, audience, pain point, and offer.'); return; }
@@ -503,8 +541,7 @@ async function generateFB() {
 7. benefits: Array of 3-5 items each starting with checkmark emoji
 8. cta: "pointing right emoji Click Learn More to [action]"
 Industry: ${industry}. ${iRule}
-Product: ${product}. Audience: ${audience}. Pain: ${pain}. Offer: ${offer}.
-${benefits ? 'Benefits: ' + benefits : ''}${context ? ' Context: ' + context : ''}
+Product: ${product}. Audience: ${audience}. Pain: ${pain}. Offer: ${offer}.${context ? ' Context: ' + context : ''}
 Strictly follow Facebook policies. No prohibited claims, no personal attributes, no excessive punctuation.
 Return ONLY valid JSON array: [{"variantName":"Variant A","callout":"...","situation":"...","offerIntro":"...","emotionalQuestion":"...","transition":"Here's the good news...","offerHeadline":"...","benefits":["..."],"cta":"..."}]`;
   try {
@@ -676,4 +713,3 @@ Return ONLY valid JSON: {"subject":"Appeal Subject Line","appeal":"full message 
 </script>
 </body>
 </html>
- 
